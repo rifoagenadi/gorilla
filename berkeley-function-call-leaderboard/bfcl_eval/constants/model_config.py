@@ -67,7 +67,7 @@ from bfcl_eval.model_handler.local_inference.salesforce_qwen import (
     SalesforceQwenHandler,
 )
 from bfcl_eval.model_handler.local_inference.think_agent import ThinkAgentHandler
-
+from bfcl_eval.model_handler.local_inference.k2v2_fc import K2V2HandlerLow, K2V2HandlerMedium, K2V2HandlerHigh
 # -----------------------------------------------------------------------------
 # A mapping of model identifiers to their respective model configurations.
 # Each key corresponds to the model id passed to the `--model` argument
@@ -116,6 +116,78 @@ class ModelConfig:
 
 # Inference through API calls
 api_inference_model_map = {
+    "LLM360/K2-V2-Instruct-Low": ModelConfig(
+        model_name="LLM360/K2-V2-Instruct",
+        display_name="LLM360/K2-V2-Instruct (FC Low Reasoning Effort)",
+        url="https://huggingface.co/LLM360/K2-V2-Instruct",
+        org="MBZUAI-IFM",
+        license="apache-2.0",
+        model_handler=K2V2HandlerLow,
+        input_price=None,
+        output_price=None,
+        is_fc_model=True,
+        underscore_to_dot=False,
+    ),
+    "LLM360/K2-V2-Instruct-Medium": ModelConfig(
+        model_name="LLM360/K2-V2-Instruct",
+        display_name="LLM360/K2-V2-Instruct (FC Medium Reasoning Effort)",
+        url="https://huggingface.co/LLM360/K2-V2-Instruct",
+        org="MBZUAI-IFM",
+        license="apache-2.0",
+        model_handler=K2V2HandlerMedium,
+        input_price=None,
+        output_price=None,
+        is_fc_model=True,
+        underscore_to_dot=False,
+    ),
+    "LLM360/K2-V2-Instruct-High": ModelConfig(
+        model_name="LLM360/K2-V2-Instruct",
+        display_name="LLM360/K2-V2-Instruct (FC Medium Reasoning Effort)",
+        url="https://huggingface.co/LLM360/K2-V2-Instruct",
+        org="MBZUAI-IFM",
+        license="apache-2.0",
+        model_handler=K2V2HandlerHigh,
+        input_price=None,
+        output_price=None,
+        is_fc_model=True,
+        underscore_to_dot=False,
+    ),
+    "LLM360/K2-Think-V2-Low": ModelConfig(
+        model_name="LLM360/K2-Think-V2",
+        display_name="LLM360/K2-Think-V2 (FC Low Reasoning Effort)",
+        url="https://huggingface.co/LLM360/K2-Think-V2",
+        org="MBZUAI-IFM",
+        license="apache-2.0",
+        model_handler=K2V2HandlerLow,
+        input_price=None,
+        output_price=None,
+        is_fc_model=True,
+        underscore_to_dot=False,
+    ),
+    "LLM360/K2-Think-V2-Medium": ModelConfig(
+        model_name="LLM360/K2-Think-V2",
+        display_name="LLM360/K2-Think-V2 (FC Medium Reasoning Effort)",
+        url="https://huggingface.co/LLM360/K2-Think-V2",
+        org="MBZUAI-IFM",
+        license="apache-2.0",
+        model_handler=K2V2HandlerMedium,
+        input_price=None,
+        output_price=None,
+        is_fc_model=True,
+        underscore_to_dot=False,
+    ),
+    "LLM360/K2-Think-V2-High": ModelConfig(
+        model_name="LLM360/K2-Think-V2",
+        display_name="LLM360/K2-Think-V2 (FC High Reasoning Effort)",
+        url="https://huggingface.co/LLM360/K2-Think-V2",
+        org="MBZUAI-IFM",
+        license="private",
+        model_handler=K2V2HandlerHigh,
+        input_price=None,
+        output_price=None,
+        is_fc_model=True,
+        underscore_to_dot=False,
+    ),
     "gorilla-openfunctions-v2": ModelConfig(
         model_name="gorilla-openfunctions-v2",
         display_name="Gorilla-OpenFunctions-v2 (FC)",
