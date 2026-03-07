@@ -269,6 +269,11 @@ class K2V2HandlerHigh(OSSHandler):
     @override
     def _format_prompt(self, messages, function):
         formatted_prompt = self.tokenizer.apply_chat_template(messages, tools=function, tokenize=False, add_generation_prompt=True, reasoning_effort="high")
+        # Add instruction about multiple tool calls
+        formatted_prompt = formatted_prompt.replace(
+            "</tool_call><|im_end|>",
+            "</tool_call>\nYou may use multiple <tool_call> blocks if multiple function calls are needed to fully address the request.<|im_end|>"
+        )
         return formatted_prompt
 
     @override
